@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COMILFO | Wedding Haute Pâtisserie</title>
+    <title>COMILFO | Кондитерское ателье</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Cormorant+SC:wght@600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #EDE1D3;
@@ -14,7 +13,6 @@
             --text-dark: #1A1512;
         }
 
-        /* Симуляция десктопа в маленьком окне */
         html {
             background-color: #ccc;
             display: flex;
@@ -26,10 +24,10 @@
             background-color: var(--bg-color);
             color: var(--text-dark);
             scroll-behavior: smooth;
-            width: 1440px; 
+            width: 1440px;
             min-width: 1440px;
             transform-origin: top center;
-            transform: scale(0.45); 
+            transform: scale(0.45);
             box-shadow: 0 0 50px rgba(0,0,0,0.3);
         }
 
@@ -39,290 +37,277 @@
 
         h1, h2, h3, h4, .font-brand {
             font-family: 'Cormorant SC', serif;
-            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.15em;
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .btn-fashion {
-            position: relative;
-            overflow: hidden;
-            border: 1px solid var(--text-dark);
-            padding: 1.25rem 2.5rem;
-            font-size: 0.7rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            transition: all 0.4s ease;
-            display: inline-block;
-            background: transparent;
-            cursor: pointer;
-            text-align: center;
-        }
-
-        .btn-fashion:hover {
-            background-color: var(--text-dark);
-            color: white;
+            letter-spacing: 0.1em;
         }
 
         .img-container {
             overflow: hidden;
-            background-color: #DBCAB8;
+            border-radius: 20px;
+            background-color: #DBCAB8; /* Цвет-заглушка на случай долгой загрузки */
         }
 
         .img-container img {
-            transition: transform 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+            transition: transform 1s ease;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .img-container:hover img {
             transform: scale(1.05);
         }
 
+        .nav-link {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            font-weight: 300;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-link:hover {
+            opacity: 0.5;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--text-dark);
+            padding: 1rem 2rem;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-outline:hover {
+            background: var(--text-dark);
+            color: white;
+        }
+
         .form-input {
             background: transparent;
             border: none;
             border-bottom: 1px solid rgba(26, 21, 18, 0.2);
-            padding: 1rem 0;
+            padding: 0.8rem 0;
             width: 100%;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
             outline: none;
-            transition: border-color 0.3s;
-        }
-
-        .form-input:focus {
-            border-bottom-color: var(--accent-color);
-        }
-
-        select.form-input {
-            appearance: none;
-            cursor: pointer;
-        }
-
-        label {
-            font-size: 0.65rem;
             text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: var(--accent-color);
-            font-weight: 600;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+        }
+
+        .category-overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 50%);
         }
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- Header -->
-    <header class="fixed w-[1440px] z-50 mix-blend-difference text-white py-12">
-        <div class="px-20 flex justify-between items-center">
-            <div class="text-4xl font-brand tracking-[0.4em]">COMILFO</div>
-            <nav class="flex space-x-16 text-[11px] uppercase tracking-[0.5em] font-light">
-                <a href="#about" class="hover:opacity-50 transition">О нас</a>
-                <a href="#wedding" class="hover:opacity-50 transition">Свадьба</a>
-                <a href="#constructor" class="hover:opacity-50 transition">Конструктор</a>
-                <a href="#contacts" class="hover:opacity-50 transition">Контакты</a>
-            </nav>
-            <div class="flex items-center space-x-10">
-                <a href="#" class="text-[11px] uppercase tracking-[0.4em] font-medium border-b border-white/30">Ru / En</a>
-                <div class="w-8 h-px bg-white"></div>
-            </div>
+    <!-- Навигация -->
+    <header class="py-10 px-20 flex justify-between items-center bg-transparent relative z-20">
+        <div class="text-3xl font-brand tracking-[0.3em]">COMILFO</div>
+        <nav class="flex space-x-12">
+            <a href="#" class="nav-link">Каталог</a>
+            <a href="#" class="nav-link">Начинки</a>
+            <a href="#" class="nav-link">Покупателям</a>
+            <a href="#" class="nav-link">Контакты</a>
+        </nav>
+        <div class="flex items-center space-x-8">
+            <span class="text-[10px] tracking-widest opacity-60">RU / EN</span>
+            <div class="w-6 h-px bg-black"></div>
         </div>
     </header>
 
-    <!-- Hero -->
-    <section class="relative h-screen flex items-center justify-center overflow-hidden bg-black text-white">
-        <div class="absolute inset-0 img-container">
-            <img src="https://images.unsplash.com/photo-1511739001486-6bfe10ce715a?auto=format&fit=crop&q=80" class="w-full h-full object-cover opacity-60" alt="Wedding Atmosphere">
+    <!-- Главный блок -->
+    <section class="px-20 pt-10 pb-32">
+        <div class="flex justify-between items-end mb-12">
+            <p class="max-w-md text-stone-500 text-sm leading-relaxed uppercase tracking-wider">
+                Десерты, которые выбирают для самых важных событий. Искусство вкуса в каждой детали с 2005 года.
+            </p>
+            <div class="flex space-x-6">
+                <a href="#" class="btn-outline">Посмотреть каталог</a>
+                <a href="#constructor" class="btn-outline bg-white/50">Заказать торт</a>
+            </div>
         </div>
-        <div class="relative z-10 text-center px-6">
-            <span class="block text-[12px] uppercase tracking-[0.6em] mb-10 opacity-80 font-semibold">Bespoke Wedding Collection</span>
-            <h1 class="text-[120px] leading-none mb-14 font-brand">Искусство <br> Вашего Торжества</h1>
-            <p class="text-2xl font-light max-w-3xl mx-auto mb-16 opacity-90 italic">Торты, созданные для того, чтобы стать сердцем вашего праздника.</p>
+        <div class="img-container aspect-[21/9] shadow-2xl">
+            <img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&q=80" alt="[Десерты на столе]">
         </div>
     </section>
 
-    <!-- Philosophy -->
-    <section id="wedding" class="py-60 px-20">
-        <div class="grid grid-cols-12 gap-20 items-center">
-            <div class="col-span-5 reveal active">
-                <h2 class="text-[80px] leading-none mb-16">Безупречная <br> Эстетика</h2>
-                <div class="space-y-12">
+    <!-- Сетка категорий (4 категории) -->
+    <section class="px-20 py-32 grid grid-cols-4 gap-8">
+        <!-- Категория: Торты -->
+        <div class="relative group cursor-pointer img-container aspect-[3/4]">
+            <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&q=80" alt="[Торты]">
+            <div class="absolute inset-0 category-overlay group-hover:bg-black/20 transition flex items-end justify-center pb-12">
+                <h3 class="text-white text-2xl font-brand">Торты</h3>
+            </div>
+        </div>
+        <!-- Категория: Пироги -->
+        <div class="relative group cursor-pointer img-container aspect-[3/4]">
+            <img src="https://images.unsplash.com/photo-1519915028121-7d3463d20b13?auto=format&fit=crop&q=80" alt="[Пироги]">
+            <div class="absolute inset-0 category-overlay group-hover:bg-black/20 transition flex items-end justify-center pb-12">
+                <h3 class="text-white text-2xl font-brand">Пироги</h3>
+            </div>
+        </div>
+        <!-- Категория: Свадебные торты -->
+        <div class="relative group cursor-pointer img-container aspect-[3/4]">
+            <img src="https://images.unsplash.com/photo-1522661089914-99acc4f4db07?auto=format&fit=crop&q=80" alt="[Свадебные торты]">
+            <div class="absolute inset-0 category-overlay group-hover:bg-black/20 transition flex items-end justify-center pb-12 text-center px-4">
+                <h3 class="text-white text-2xl font-brand">Свадебные торты</h3>
+            </div>
+        </div>
+        <!-- Категория: Мелкоштучная выпечка -->
+        <div class="relative group cursor-pointer img-container aspect-[3/4]">
+            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80" alt="[Мелкоштучная выпечка]">
+            <div class="absolute inset-0 category-overlay group-hover:bg-black/20 transition flex items-end justify-center pb-12 text-center px-4">
+                <h3 class="text-white text-2xl font-brand">Мелкоштучная выпечка</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок Качество -->
+    <section class="py-40 px-20 bg-white/30">
+        <div class="text-center mb-24">
+            <h2 class="text-5xl font-brand mb-6">Бескомпромиссное качество</h2>
+            <div class="w-24 h-px bg-stone-300 mx-auto"></div>
+        </div>
+        <div class="grid grid-cols-3 gap-20">
+            <div class="text-center space-y-6">
+                <div class="text-accent text-2xl font-brand">01.</div>
+                <h4 class="font-brand text-lg">Отборные продукты</h4>
+                <p class="text-[11px] uppercase tracking-widest text-stone-400 leading-relaxed">Прямые поставки от проверенных фермеров и шоколатье</p>
+            </div>
+            <div class="text-center space-y-6">
+                <div class="text-accent text-2xl font-brand">02.</div>
+                <h4 class="font-brand text-lg">Авторские рецепты</h4>
+                <p class="text-[11px] uppercase tracking-widest text-stone-400 leading-relaxed">Идеальный баланс текстур и сладости, созданный годами</p>
+            </div>
+            <div class="text-center space-y-6">
+                <div class="text-accent text-2xl font-brand">03.</div>
+                <h4 class="font-brand text-lg">Ручная работа</h4>
+                <p class="text-[11px] uppercase tracking-widest text-stone-400 leading-relaxed">Индивидуальный подход к каждому заказу и декору</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок История -->
+    <section class="py-60 px-20">
+        <div class="grid grid-cols-12 gap-20">
+            <div class="col-span-5 space-y-12">
+                <div class="img-container aspect-square shadow-xl">
+                    <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80" alt="[Наше производство]">
+                </div>
+                <div class="img-container aspect-video">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80" alt="[Экстерьер кондитерской]">
+                </div>
+            </div>
+            <div class="col-span-7 pl-10">
+                <span class="text-accent uppercase tracking-[0.4em] text-xs font-bold mb-8 block">Наша история</span>
+                <h2 class="text-7xl font-brand mb-16 leading-none">С 2005 года <br> создаем традиции</h2>
+                <div class="space-y-8 text-stone-500 text-sm leading-relaxed uppercase tracking-wider">
+                    <p>Наша кондитерская ведет свою историю с 2005 года. С самого начала основой работы стали внимание к качеству ингредиентов, точность рецептур и уважение к традициям кондитерского мастерства.</p>
+                    <p>За годы работы мы прошли путь от небольшой команды до устойчивого производства, сохранив главный принцип — создавать десерты, к которым хочется возвращаться.</p>
+                    <p>Сегодня мы продолжаем развиваться, совершенствуем технологии и расширяем ассортимент, оставаясь верными вкусу, качеству и эстетике в каждой детали.</p>
+                </div>
+                <div class="mt-20 pt-20 border-t border-stone-300 grid grid-cols-3">
                     <div>
-                        <h4 class="text-xl font-brand mb-4">Архитектура вкуса</h4>
-                        <p class="text-stone-500 text-sm leading-relaxed uppercase tracking-wider">Мы не просто печем торты — мы проектируем их. Каждый ярус рассчитывается так, чтобы сохранять идеальную форму в течение всего вечера.</p>
+                        <div class="text-4xl font-brand mb-2">18</div>
+                        <div class="text-[10px] uppercase tracking-widest opacity-60">лет опыта</div>
                     </div>
                     <div>
-                        <h4 class="text-xl font-brand mb-4">Декор Haute Couture</h4>
-                        <p class="text-stone-500 text-sm leading-relaxed uppercase tracking-wider">Живые цветы, сахарная флористика ручной работы или лаконичный велюр — оформление станет продолжением вашей концепции.</p>
+                        <div class="text-4xl font-brand mb-2">100+</div>
+                        <div class="text-[10px] uppercase tracking-widest opacity-60">авторских рецептов</div>
                     </div>
-                </div>
-            </div>
-            <div class="col-span-7 reveal active" style="transition-delay: 200ms;">
-                <div class="img-container aspect-[16/10]">
-                    <img src="https://images.unsplash.com/photo-1535254973040-607b474cb8c2?auto=format&fit=crop&q=80" class="w-full h-full object-cover" alt="Modern Wedding Cake">
+                    <div>
+                        <div class="text-4xl font-brand mb-2">24/7</div>
+                        <div class="text-[10px] uppercase tracking-widest opacity-60">контроль качества</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Tasting Room Experience -->
-    <section class="bg-white py-60 px-20">
-        <div class="max-w-7xl mx-auto text-center reveal active">
-            <span class="text-accent uppercase tracking-[0.5em] text-xs font-bold mb-6 block">The Tasting Experience</span>
-            <h2 class="text-6xl font-brand mb-32">Знакомство с COMILFO</h2>
-            <div class="grid grid-cols-3 gap-20">
-                <div class="text-center">
-                    <div class="img-container aspect-square mb-10 rounded-full mx-auto w-48 shadow-lg">
-                        <img src="https://images.unsplash.com/photo-1579306194872-64d3b7bac4c2?auto=format&fit=crop&q=80" class="w-full h-full object-cover" alt="Tasting">
-                    </div>
-                    <h5 class="text-lg font-brand mb-4">Дегустационный сет</h5>
-                    <p class="text-stone-500 text-[11px] uppercase tracking-widest leading-relaxed">6 самых популярных начинок в формате мини-десертов для выбора в уютной обстановке.</p>
-                </div>
-                <div class="text-center" style="transition-delay: 200ms;">
-                    <div class="img-container aspect-square mb-10 rounded-full mx-auto w-48 shadow-lg">
-                        <img src="https://images.unsplash.com/photo-1519222970733-f746152ee63b?auto=format&fit=crop&q=80" class="w-full h-full object-cover" alt="Meeting">
-                    </div>
-                    <h5 class="text-lg font-brand mb-4">Встреча с шефом</h5>
-                    <p class="text-stone-500 text-[11px] uppercase tracking-widest leading-relaxed">Обсуждение дизайна и конструктивных особенностей вашего будущего торта.</p>
-                </div>
-                <div class="text-center" style="transition-delay: 400ms;">
-                    <div class="img-container aspect-square mb-10 rounded-full mx-auto w-48 shadow-lg">
-                        <img src="https://images.unsplash.com/photo-1522758917036-e4a9710c9f3d?auto=format&fit=crop&q=80" class="w-full h-full object-cover" alt="Sketching">
-                    </div>
-                    <h5 class="text-lg font-brand mb-4">Эскиз и расчет</h5>
-                    <p class="text-stone-500 text-[11px] uppercase tracking-widest leading-relaxed">Создание финального технического задания и детального эскиза вашего десерта.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Interactive Form (Replacing Static Fillings) -->
+    <!-- Форма конструктор -->
     <section id="constructor" class="py-60 px-20 bg-[#F5F0EB]">
         <div class="max-w-6xl mx-auto">
             <div class="grid grid-cols-12 gap-24">
-                
-                <!-- Form Sidebar -->
-                <div class="col-span-4 reveal active">
-                    <h2 class="text-6xl font-brand mb-12 leading-tight italic">Конструктор <br> Заказа</h2>
-                    <p class="text-stone-500 text-sm leading-relaxed uppercase tracking-wider mb-12">
-                        Вместо стандартного меню мы предлагаем вам спроектировать свой десерт самостоятельно. Выберите параметры, и мы подготовим расчет.
+                <div class="col-span-4">
+                    <h2 class="text-6xl font-brand mb-12 leading-tight italic">Ваш <br> Идеальный Торт</h2>
+                    <p class="text-stone-500 text-[11px] leading-relaxed uppercase tracking-widest mb-12">
+                        Выберите основные параметры, и наши кондитеры свяжутся с вами для обсуждения деталей оформления и финального эскиза.
                     </p>
-                    <div class="p-10 border border-accent/20 bg-white shadow-sm italic font-light text-stone-600">
-                        "Мы подбираем сочетания, исходя из ваших личных предпочтений, чтобы вкус был таким же уникальным, как и ваша история."
+                    <div class="p-8 bg-white/50 border-l-2 border-accent italic text-sm text-stone-600">
+                        "Каждое изделие для нас — это проект, в котором нет мелочей."
                     </div>
                 </div>
-
-                <!-- Main Form Body -->
-                <div class="col-span-8 reveal active" style="transition-delay: 200ms;">
-                    <form class="grid grid-cols-2 gap-x-12 gap-y-16">
-                        
-                        <div class="flex flex-col">
-                            <label>Количество ярусов</label>
+                <div class="col-span-8">
+                    <form class="grid grid-cols-2 gap-x-12 gap-y-12">
+                        <div>
+                            <label class="text-[10px] uppercase tracking-widest opacity-50">Тип десерта</label>
                             <select class="form-input">
-                                <option value="" disabled selected>Выберите</option>
-                                <option>1 ярус (до 15 гостей)</option>
-                                <option>2 яруса (20 - 40 гостей)</option>
-                                <option>3 яруса (50 - 80 гостей)</option>
-                                <option>4+ ярусов (от 100 гостей)</option>
+                                <option>Свадебный торт</option>
+                                <option>Праздничный торт</option>
+                                <option>Бенто-торт</option>
+                                <option>Набор пирожных</option>
                             </select>
                         </div>
-
-                        <div class="flex flex-col">
-                            <label>Кол-во гостей / Вес (кг)</label>
-                            <input type="text" class="form-input" placeholder="Напр: 50 гостей">
+                        <div>
+                            <label class="text-[10px] uppercase tracking-widest opacity-50">Вес / Порции</label>
+                            <input type="text" class="form-input" placeholder="Напр: 5 кг / 25 гостей">
                         </div>
-
-                        <div class="flex flex-col">
-                            <label>Основа бисквита</label>
+                        <div>
+                            <label class="text-[10px] uppercase tracking-widest opacity-50">Начинка</label>
                             <select class="form-input">
-                                <option value="" disabled selected>Выберите бисквит</option>
-                                <option>Ванильный бурбон</option>
-                                <option>Шоколадный велюр</option>
-                                <option>Фисташковый дакуаз</option>
-                                <option>Миндальный бисквит</option>
-                            </select>
-                        </div>
-
-                        <div class="flex flex-col">
-                            <label>Желаемая начинка</label>
-                            <select class="form-input">
-                                <option value="" disabled selected>Выберите вкус</option>
                                 <option>Манго-Маракуйя</option>
-                                <option>Лесные ягоды</option>
-                                <option>Соленая карамель</option>
                                 <option>Фисташка-Малина</option>
-                                <option>Тропический микс</option>
+                                <option>Шоколад-Вишня</option>
+                                <option>Классика Ваниль</option>
                             </select>
                         </div>
-
-                        <div class="flex flex-col col-span-2">
-                            <label>Стиль декора</label>
-                            <select class="form-input">
-                                <option value="" disabled selected>Выберите эстетику</option>
-                                <option>Минимализм (гладкое покрытие)</option>
-                                <option>Флористика (цветы)</option>
-                                <option>Luxury (золото и текстуры)</option>
-                                <option>У меня есть свой референс</option>
-                            </select>
+                        <div>
+                            <label class="text-[10px] uppercase tracking-widest opacity-50">Ваше имя</label>
+                            <input type="text" class="form-input" placeholder="Александра">
                         </div>
-
-                        <div class="flex flex-col col-span-2">
-                            <label>Имя и Контакты (Телефон/WhatsApp)</label>
-                            <input type="text" class="form-input" placeholder="Александра, +7 (___) ___-__-__">
+                        <div class="col-span-2">
+                            <label class="text-[10px] uppercase tracking-widest opacity-50">Телефон для связи</label>
+                            <input type="tel" class="form-input" placeholder="+7 (___) ___-__-__">
                         </div>
-
-                        <div class="col-span-2 pt-10">
-                            <button type="button" class="btn-fashion w-full">Отправить запрос на расчет</button>
+                        <div class="col-span-2 pt-6">
+                            <button type="button" class="btn-outline w-full py-6">Получить расчет стоимости</button>
                         </div>
-
                     </form>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer id="contacts" class="bg-[#2D241E] text-[#EDE1D3]/60 py-48 px-20">
+    <!-- Футер -->
+    <footer class="bg-[#2D241E] text-[#EDE1D3]/60 py-48 px-20">
         <div class="grid grid-cols-4 gap-32">
             <div class="col-span-2">
-                <div class="text-[#EDE1D3] text-6xl font-brand mb-14 tracking-[0.5em]">COMILFO</div>
-                <p class="text-xs uppercase tracking-[0.6em] mb-16 opacity-40">Premium Pâtisserie Studio Moscow</p>
-                <div class="flex space-x-16 text-[11px] uppercase tracking-[0.4em]">
+                <div class="text-[#EDE1D3] text-5xl font-brand mb-10 tracking-[0.4em]">COMILFO</div>
+                <p class="text-xs uppercase tracking-[0.4em] mb-12 opacity-40">Кондитерское ателье высокого вкуса</p>
+                <div class="flex space-x-12 text-[11px] uppercase tracking-[0.3em]">
                     <a href="#" class="hover:text-white transition underline underline-offset-8">Instagram</a>
                     <a href="#" class="hover:text-white transition underline underline-offset-8">Telegram</a>
                 </div>
             </div>
-            <div class="space-y-12">
-                <h5 class="text-white text-xs uppercase tracking-[0.5em] font-bold">Услуги</h5>
-                <ul class="text-xs uppercase tracking-[0.4em] space-y-6 font-light">
-                    <li><a href="#" class="hover:text-white">Витрина</a></li>
-                    <li><a href="#" class="hover:text-white">Свадьба</a></li>
-                    <li><a href="#" class="hover:text-white">О нас</a></li>
-                </ul>
+            <div class="space-y-8 font-light text-[11px] uppercase tracking-widest">
+                <h5 class="text-white font-bold mb-4">Навигация</h5>
+                <a href="#" class="block hover:text-white">Меню</a>
+                <a href="#" class="block hover:text-white">Оплата и доставка</a>
+                <a href="#" class="block hover:text-white">Для партнеров</a>
             </div>
-            <div class="space-y-12 text-right">
-                <h5 class="text-white text-xs uppercase tracking-[0.5em] font-bold">Контакт</h5>
-                <p class="text-xs uppercase tracking-[0.4em] leading-loose font-light">
-                    Москва, ул. Эстетов, 5<br>
-                    +7 (495) 000-00-00
-                </p>
+            <div class="text-right space-y-4">
+                <h5 class="text-white text-[11px] font-bold uppercase tracking-widest mb-6">Контакты</h5>
+                <p class="text-[12px]">Москва, ул. Эстетов, 5</p>
+                <p class="text-xl text-[#EDE1D3] font-brand">+7 (495) 123-45-67</p>
+                <p class="text-[10px] opacity-40 mt-10">© 2023 COMILFO. Все права защищены</p>
             </div>
         </div>
     </footer>
 
-    <script>
-        document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
-    </script>
 </body>
 </html>
