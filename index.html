@@ -5,16 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COMILFO | Кондитерское ателье</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Cormorant+SC:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #EDE1D3;
+            --bg-color: #F9F5F1;
             --accent-color: #9B795E;
             --text-dark: #1A1512;
+            --border-light: rgba(26, 21, 18, 0.1);
+        }
+
+        /* Настройка Copperplate Gothic */
+        .font-copperplate {
+            font-family: 'Copperplate', 'Copperplate Gothic Light', 'Copperplate Gothic Bold', serif;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 700;
         }
 
         html {
-            background-color: #ccc;
+            background-color: #e5e5e5;
             display: flex;
             justify-content: center;
         }
@@ -27,285 +36,303 @@
             width: 1440px;
             min-width: 1440px;
             transform-origin: top center;
-            transform: scale(0.45);
-            box-shadow: 0 0 50px rgba(0,0,0,0.3);
-        }
-
-        @media (min-width: 1000px) {
-            body { transform: scale(0.7); }
+            transform: scale(0.65);
+            box-shadow: 0 0 100px rgba(0,0,0,0.1);
         }
 
         h1, h2, h3, h4, .font-brand {
-            font-family: 'Cormorant SC', serif;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
+            @apply font-copperplate;
+        }
+
+        .serif-italic {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
         }
 
         .img-container {
             overflow: hidden;
-            border-radius: 20px;
-            background-color: #DBCAB8; /* Цвет-заглушка на случай долгой загрузки */
+            border-radius: 2px;
+            background-color: #DBCAB8;
         }
 
         .img-container img {
-            transition: transform 1s ease;
+            transition: transform 1.5s cubic-bezier(0.19, 1, 0.22, 1);
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
         .img-container:hover img {
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
 
         .nav-link {
-            font-size: 11px;
+            font-size: 10px;
             text-transform: uppercase;
-            letter-spacing: 0.3em;
-            font-weight: 300;
-            transition: opacity 0.3s ease;
+            letter-spacing: 0.25em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid transparent;
         }
 
         .nav-link:hover {
-            opacity: 0.5;
+            border-bottom: 1px solid var(--text-dark);
+            opacity: 0.7;
         }
 
-        .btn-outline {
+        .btn-luxury {
             border: 1px solid var(--text-dark);
-            padding: 1rem 2rem;
-            font-size: 0.7rem;
-            letter-spacing: 0.2em;
+            padding: 1.25rem 2.5rem;
+            font-size: 0.65rem;
+            letter-spacing: 0.3em;
             text-transform: uppercase;
-            transition: all 0.3s ease;
-            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            @apply font-copperplate;
         }
 
-        .btn-outline:hover {
+        .btn-luxury:hover {
             background: var(--text-dark);
             color: white;
         }
 
-        .form-input {
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid rgba(26, 21, 18, 0.2);
-            padding: 0.8rem 0;
-            width: 100%;
-            outline: none;
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            letter-spacing: 0.1em;
+        .marquee {
+            overflow: hidden;
+            white-space: nowrap;
+            background: var(--text-dark);
+            color: var(--bg-color);
+            padding: 1rem 0;
+            @apply font-copperplate;
+            letter-spacing: 0.4em;
+            font-size: 0.7rem;
         }
 
-        .category-overlay {
-            background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 50%);
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 35s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .category-card {
+            position: relative;
+            transition: all 0.5s ease;
+        }
+
+        .category-label {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            z-index: 10;
+            white-space: nowrap;
+            opacity: 0.9;
+            transition: transform 0.5s ease;
+            @apply font-copperplate;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .category-card:hover .category-label {
+            transform: translateX(-50%) translateY(-10px);
+        }
+
+        .divider {
+            height: 1px;
+            background: var(--border-light);
+            width: 100%;
         }
     </style>
 </head>
 <body class="antialiased">
 
     <!-- Навигация -->
-    <header class="py-10 px-20 flex justify-between items-center bg-transparent relative z-20">
-        <div class="text-3xl font-brand tracking-[0.3em]">COMILFO</div>
-        <nav class="flex space-x-12">
+    <header class="py-12 px-24 flex justify-between items-center bg-transparent relative z-20">
+        <div class="text-3xl font-copperplate tracking-[0.4em]">COMILFO</div>
+        <nav class="flex space-x-16">
             <a href="#" class="nav-link">Каталог</a>
-            <a href="#" class="nav-link">Начинки</a>
+            <a href="#" class="nav-link">О нас</a>
             <a href="#" class="nav-link">Покупателям</a>
             <a href="#" class="nav-link">Контакты</a>
         </nav>
-        <div class="flex items-center space-x-8">
-            <span class="text-[10px] tracking-widest opacity-60">RU / EN</span>
-            <div class="w-6 h-px bg-black"></div>
+        <div class="flex items-center space-x-6 text-[10px] tracking-[0.2em] font-medium uppercase">
+            <span>RU</span>
+            <span class="opacity-30">|</span>
+            <span class="opacity-30">EN</span>
         </div>
     </header>
 
-    <!-- Главный блок -->
-    <section class="px-20 pt-10 pb-32">
-        <div class="flex justify-between items-end mb-12">
-            <p class="max-w-md text-stone-500 text-sm leading-relaxed uppercase tracking-wider">
-                Десерты, которые выбирают для самых важных событий. Искусство вкуса в каждой детали с 2005 года.
-            </p>
-            <div class="flex space-x-6">
-                <a href="#" class="btn-outline">Посмотреть каталог</a>
-                <a href="#constructor" class="btn-outline bg-white/50">Заказать торт</a>
+    <!-- Главный блок (Hero) -->
+    <section class="px-24 pt-8 pb-40">
+        <div class="grid grid-cols-12 gap-8 items-end mb-16">
+            <div class="col-span-8">
+                <h1 class="text-[5.5rem] leading-[1] font-copperplate mb-8">
+                    Искусство <br> <span class="serif-italic lowercase tracking-normal font-normal">создавать</span> вкус
+                </h1>
+                <p class="max-w-md text-stone-500 text-[10px] leading-relaxed uppercase tracking-[0.25em]">
+                    Десерты, которые выбирают для самых важных событий. Безупречное исполнение в каждой детали.
+                </p>
+            </div>
+            <div class="col-span-4 text-right flex flex-col items-end">
+                <div class="mb-10 text-[9px] tracking-[0.5em] uppercase opacity-40 font-copperplate">Since 2005 • Premium Pastry</div>
+                <a href="#catalog" class="btn-luxury">Перейти в каталог</a>
             </div>
         </div>
-        <div class="img-container aspect-[21/9] shadow-2xl">
-            <img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&q=80" alt="[Десерты на столе]">
+        <div class="img-container aspect-[21/9] shadow-sm">
+            <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&q=80" alt="[Изображение десерта на главной]">
         </div>
     </section>
 
-    <!-- Сетка категорий (4 категории) -->
-    <section class="px-20 py-32 grid grid-cols-4 gap-8">
-        <!-- Категория: Торты -->
-        <div class="relative group cursor-pointer img-container aspect-[3/4]">
-            <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&q=80" alt="[Торты]">
-            <div class="absolute inset-0 category-overlay group-hover:bg-black/20 transition flex items-end justify-center pb-12">
-                <h3 class="text-white text-2xl font-brand">Торты</h3>
-            </div>
+    <!-- Сетка категорий -->
+    <section id="catalog" class="px-24 py-40 border-t border-stone-200">
+        <div class="flex justify-between items-center mb-24">
+            <h2 class="text-3xl font-copperplate">Наш ассортимент</h2>
+            <div class="w-1/3 divider"></div>
         </div>
-        <!-- Категория: Пироги -->
-        <div class="relative group cursor-pointer img-container aspect-[3/4]">
-            <img src="https://images.unsplash.com/photo-1519915028121-7d3463d20b13?auto=format&fit=crop&q=80" alt="[Пироги]">
-            <div class="absolute inset-0 category-overlay group-hover:bg-black/20 transition flex items-end justify-center pb-12">
-                <h3 class="text-white text-2xl font-brand">Пироги</h3>
+        
+        <div class="grid grid-cols-4 gap-6">
+            <!-- Торты -->
+            <div class="category-card group cursor-pointer img-container aspect-[3/4]">
+                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&q=80" alt="[Изображение тортов]">
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-500"></div>
+                <h3 class="category-label text-lg">Торты</h3>
             </div>
-        </div>
-        <!-- Категория: Свадебные торты -->
-        <div class="relative group cursor-pointer img-container aspect-[3/4]">
-            <img src="https://images.unsplash.com/photo-1522661089914-99acc4f4db07?auto=format&fit=crop&q=80" alt="[Свадебные торты]">
-            <div class="absolute inset-0 category-overlay group-hover:bg-black/20 transition flex items-end justify-center pb-12 text-center px-4">
-                <h3 class="text-white text-2xl font-brand">Свадебные торты</h3>
+            
+            <!-- Пироги -->
+            <div class="category-card group cursor-pointer img-container aspect-[3/4]">
+                <img src="https://images.unsplash.com/photo-1562007908-17c67e870c88?auto=format&fit=crop&q=80" alt="[Изображение пирогов]">
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-500"></div>
+                <h3 class="category-label text-lg">Пироги</h3>
             </div>
-        </div>
-        <!-- Категория: Мелкоштучная выпечка -->
-        <div class="relative group cursor-pointer img-container aspect-[3/4]">
-            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80" alt="[Мелкоштучная выпечка]">
-            <div class="absolute inset-0 category-overlay group-hover:bg-black/20 transition flex items-end justify-center pb-12 text-center px-4">
-                <h3 class="text-white text-2xl font-brand">Мелкоштучная выпечка</h3>
+            
+            <!-- Свадебные торты -->
+            <div class="category-card group cursor-pointer img-container aspect-[3/4]">
+                <img src="https://images.unsplash.com/photo-1535254973040-607b474cb8c2?auto=format&fit=crop&q=80" alt="[Изображение свадебных тортов]">
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-500"></div>
+                <h3 class="category-label text-lg text-center">Свадебные<br>торты</h3>
+            </div>
+            
+            <!-- Мелкоштучная выпечка -->
+            <div class="category-card group cursor-pointer img-container aspect-[3/4]">
+                <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&q=80" alt="[Изображение выпечки]">
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-500"></div>
+                <h3 class="category-label text-lg text-center">Мелкоштучная<br>выпечка</h3>
             </div>
         </div>
     </section>
+
+    <!-- Бегущая строка -->
+    <div class="marquee mb-40">
+        <div class="marquee-content">
+            PREMIUM PRODUCTS • AESTHETICS • DEEP TASTE • ART OF PASTRY • SINCE 2005 • PREMIUM PRODUCTS • AESTHETICS • DEEP TASTE • ART OF PASTRY • SINCE 2005 • 
+        </div>
+        <div class="marquee-content">
+            PREMIUM PRODUCTS • AESTHETICS • DEEP TASTE • ART OF PASTRY • SINCE 2005 • PREMIUM PRODUCTS • AESTHETICS • DEEP TASTE • ART OF PASTRY • SINCE 2005 • 
+        </div>
+    </div>
 
     <!-- Блок Качество -->
-    <section class="py-40 px-20 bg-white/30">
-        <div class="text-center mb-24">
-            <h2 class="text-5xl font-brand mb-6">Бескомпромиссное качество</h2>
-            <div class="w-24 h-px bg-stone-300 mx-auto"></div>
+    <section class="py-40 px-24 bg-stone-100">
+        <div class="text-center mb-32">
+            <h2 class="text-4xl font-copperplate mb-6">Безупречное качество</h2>
+            <p class="text-[9px] tracking-[0.6em] uppercase opacity-40 font-copperplate">Три столпа нашей философии</p>
         </div>
-        <div class="grid grid-cols-3 gap-20">
-            <div class="text-center space-y-6">
-                <div class="text-accent text-2xl font-brand">01.</div>
-                <h4 class="font-brand text-lg">Отборные продукты</h4>
-                <p class="text-[11px] uppercase tracking-widest text-stone-400 leading-relaxed">Прямые поставки от проверенных фермеров и шоколатье</p>
+        <div class="grid grid-cols-3 gap-24 max-w-6xl mx-auto">
+            <div class="space-y-8">
+                <div class="text-3xl font-copperplate opacity-20">01</div>
+                <h4 class="font-copperplate text-base tracking-[0.2em]">Отборные продукты</h4>
+                <p class="text-[11px] uppercase tracking-widest text-stone-400 leading-loose">Мы работаем только с лучшими поставщиками шоколада, сливок и свежих ягод.</p>
             </div>
-            <div class="text-center space-y-6">
-                <div class="text-accent text-2xl font-brand">02.</div>
-                <h4 class="font-brand text-lg">Авторские рецепты</h4>
-                <p class="text-[11px] uppercase tracking-widest text-stone-400 leading-relaxed">Идеальный баланс текстур и сладости, созданный годами</p>
+            <div class="space-y-8">
+                <div class="text-3xl font-copperplate opacity-20">02</div>
+                <h4 class="font-copperplate text-base tracking-[0.2em]">Авторские рецепты</h4>
+                <p class="text-[11px] uppercase tracking-widest text-stone-400 leading-loose">Каждый вкус проработан до мелочей, чтобы дарить вам истинное наслаждение.</p>
             </div>
-            <div class="text-center space-y-6">
-                <div class="text-accent text-2xl font-brand">03.</div>
-                <h4 class="font-brand text-lg">Ручная работа</h4>
-                <p class="text-[11px] uppercase tracking-widest text-stone-400 leading-relaxed">Индивидуальный подход к каждому заказу и декору</p>
+            <div class="space-y-8">
+                <div class="text-3xl font-copperplate opacity-20">03</div>
+                <h4 class="font-copperplate text-base tracking-[0.2em]">Ручная работа</h4>
+                <p class="text-[11px] uppercase tracking-widest text-stone-400 leading-loose">Индивидуальный подход к декору и оформлению каждого изделия.</p>
             </div>
         </div>
     </section>
 
     <!-- Блок История -->
-    <section class="py-60 px-20">
-        <div class="grid grid-cols-12 gap-20">
-            <div class="col-span-5 space-y-12">
-                <div class="img-container aspect-square shadow-xl">
-                    <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80" alt="[Наше производство]">
+    <section class="py-60 px-24">
+        <div class="grid grid-cols-12 gap-32 items-center">
+            <div class="col-span-6 relative">
+                <div class="img-container aspect-[4/5] w-4/5 shadow-2xl relative z-10">
+                    <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80" alt="[Изображение процесса производства]">
                 </div>
-                <div class="img-container aspect-video">
-                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80" alt="[Экстерьер кондитерской]">
+                <div class="img-container aspect-square w-3/5 absolute -bottom-20 -right-10 border-[12px] border-[#F9F5F1] shadow-xl z-20">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80" alt="[Изображение интерьера]">
                 </div>
             </div>
-            <div class="col-span-7 pl-10">
-                <span class="text-accent uppercase tracking-[0.4em] text-xs font-bold mb-8 block">Наша история</span>
-                <h2 class="text-7xl font-brand mb-16 leading-none">С 2005 года <br> создаем традиции</h2>
-                <div class="space-y-8 text-stone-500 text-sm leading-relaxed uppercase tracking-wider">
-                    <p>Наша кондитерская ведет свою историю с 2005 года. С самого начала основой работы стали внимание к качеству ингредиентов, точность рецептур и уважение к традициям кондитерского мастерства.</p>
+            <div class="col-span-6">
+                <span class="text-accent uppercase tracking-[0.6em] text-[9px] font-copperplate mb-10 block">Наша история</span>
+                <h2 class="text-6xl font-copperplate mb-12 leading-[1.2]">Создаем традиции <br> вкуса</h2>
+                <div class="space-y-8 text-stone-500 text-xs leading-relaxed uppercase tracking-[0.15em]">
+                    <p>Наша кондитерская ведет свою историю с 2005 года. С самого начала основой работы стали внимание к качеству ингредиентов и уважение к традициям кондитерского мастерства.</p>
                     <p>За годы работы мы прошли путь от небольшой команды до устойчивого производства, сохранив главный принцип — создавать десерты, к которым хочется возвращаться.</p>
-                    <p>Сегодня мы продолжаем развиваться, совершенствуем технологии и расширяем ассортимент, оставаясь верными вкусу, качеству и эстетике в каждой детали.</p>
                 </div>
-                <div class="mt-20 pt-20 border-t border-stone-300 grid grid-cols-3">
+                <div class="mt-20 pt-16 border-t border-stone-200 flex space-x-20">
                     <div>
-                        <div class="text-4xl font-brand mb-2">18</div>
-                        <div class="text-[10px] uppercase tracking-widest opacity-60">лет опыта</div>
-                    </div>
-                    <div>
-                        <div class="text-4xl font-brand mb-2">100+</div>
-                        <div class="text-[10px] uppercase tracking-widest opacity-60">авторских рецептов</div>
+                        <div class="text-2xl font-copperplate mb-1">18+</div>
+                        <div class="text-[8px] uppercase tracking-widest opacity-40 font-copperplate">Лет опыта</div>
                     </div>
                     <div>
-                        <div class="text-4xl font-brand mb-2">24/7</div>
-                        <div class="text-[10px] uppercase tracking-widest opacity-60">контроль качества</div>
+                        <div class="text-2xl font-copperplate mb-1">100%</div>
+                        <div class="text-[8px] uppercase tracking-widest opacity-40 font-copperplate">Натурально</div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Форма конструктор -->
-    <section id="constructor" class="py-60 px-20 bg-[#F5F0EB]">
-        <div class="max-w-6xl mx-auto">
-            <div class="grid grid-cols-12 gap-24">
-                <div class="col-span-4">
-                    <h2 class="text-6xl font-brand mb-12 leading-tight italic">Ваш <br> Идеальный Торт</h2>
-                    <p class="text-stone-500 text-[11px] leading-relaxed uppercase tracking-widest mb-12">
-                        Выберите основные параметры, и наши кондитеры свяжутся с вами для обсуждения деталей оформления и финального эскиза.
-                    </p>
-                    <div class="p-8 bg-white/50 border-l-2 border-accent italic text-sm text-stone-600">
-                        "Каждое изделие для нас — это проект, в котором нет мелочей."
-                    </div>
-                </div>
-                <div class="col-span-8">
-                    <form class="grid grid-cols-2 gap-x-12 gap-y-12">
-                        <div>
-                            <label class="text-[10px] uppercase tracking-widest opacity-50">Тип десерта</label>
-                            <select class="form-input">
-                                <option>Свадебный торт</option>
-                                <option>Праздничный торт</option>
-                                <option>Бенто-торт</option>
-                                <option>Набор пирожных</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="text-[10px] uppercase tracking-widest opacity-50">Вес / Порции</label>
-                            <input type="text" class="form-input" placeholder="Напр: 5 кг / 25 гостей">
-                        </div>
-                        <div>
-                            <label class="text-[10px] uppercase tracking-widest opacity-50">Начинка</label>
-                            <select class="form-input">
-                                <option>Манго-Маракуйя</option>
-                                <option>Фисташка-Малина</option>
-                                <option>Шоколад-Вишня</option>
-                                <option>Классика Ваниль</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="text-[10px] uppercase tracking-widest opacity-50">Ваше имя</label>
-                            <input type="text" class="form-input" placeholder="Александра">
-                        </div>
-                        <div class="col-span-2">
-                            <label class="text-[10px] uppercase tracking-widest opacity-50">Телефон для связи</label>
-                            <input type="tel" class="form-input" placeholder="+7 (___) ___-__-__">
-                        </div>
-                        <div class="col-span-2 pt-6">
-                            <button type="button" class="btn-outline w-full py-6">Получить расчет стоимости</button>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Футер -->
-    <footer class="bg-[#2D241E] text-[#EDE1D3]/60 py-48 px-20">
-        <div class="grid grid-cols-4 gap-32">
-            <div class="col-span-2">
-                <div class="text-[#EDE1D3] text-5xl font-brand mb-10 tracking-[0.4em]">COMILFO</div>
-                <p class="text-xs uppercase tracking-[0.4em] mb-12 opacity-40">Кондитерское ателье высокого вкуса</p>
-                <div class="flex space-x-12 text-[11px] uppercase tracking-[0.3em]">
-                    <a href="#" class="hover:text-white transition underline underline-offset-8">Instagram</a>
-                    <a href="#" class="hover:text-white transition underline underline-offset-8">Telegram</a>
+    <footer class="bg-[#1A1512] text-white/40 py-48 px-24">
+        <div class="grid grid-cols-12 gap-20">
+            <div class="col-span-5">
+                <h2 class="text-[#F9F5F1] text-4xl font-copperplate mb-12 tracking-[0.5em]">COMILFO</h2>
+                <div class="space-y-6 text-[10px] uppercase tracking-[0.3em]">
+                    <p class="text-white/80 font-copperplate">Кондитерское ателье высокого вкуса</p>
+                    <p class="leading-loose opacity-60">Искусство десерта — это не просто <br> рецепт, это эмоция, запечатленная <br> в сахаре и шоколаде.</p>
                 </div>
             </div>
-            <div class="space-y-8 font-light text-[11px] uppercase tracking-widest">
-                <h5 class="text-white font-bold mb-4">Навигация</h5>
-                <a href="#" class="block hover:text-white">Меню</a>
-                <a href="#" class="block hover:text-white">Оплата и доставка</a>
-                <a href="#" class="block hover:text-white">Для партнеров</a>
+            
+            <div class="col-span-3 space-y-12">
+                <h5 class="text-white text-[10px] font-copperplate tracking-[0.4em]">Навигация</h5>
+                <ul class="space-y-6 text-[9px] uppercase tracking-[0.3em]">
+                    <li><a href="#" class="hover:text-white transition">Каталог изделий</a></li>
+                    <li><a href="#" class="hover:text-white transition">Доставка и оплата</a></li>
+                    <li><a href="#" class="hover:text-white transition">Политика конфиденциальности</a></li>
+                </ul>
             </div>
-            <div class="text-right space-y-4">
-                <h5 class="text-white text-[11px] font-bold uppercase tracking-widest mb-6">Контакты</h5>
-                <p class="text-[12px]">Москва, ул. Эстетов, 5</p>
-                <p class="text-xl text-[#EDE1D3] font-brand">+7 (495) 123-45-67</p>
-                <p class="text-[10px] opacity-40 mt-10">© 2023 COMILFO. Все права защищены</p>
+
+            <div class="col-span-4 space-y-12">
+                <h5 class="text-white text-[10px] font-copperplate tracking-[0.4em]">Как нас найти</h5>
+                <div class="space-y-6 text-[11px] tracking-[0.15em] uppercase">
+                    <p class="text-white/90">+7 (495) 123-45-67</p>
+                    <p class="text-white/60 lowercase">hello@comilfo-pastry.ru</p>
+                    <p class="text-white/60">Москва, ул. Эстетов, 22, БЦ "Люкс"</p>
+                </div>
+                <div class="pt-10 flex space-x-6">
+                    <div class="w-12 h-12 border border-white/10 flex items-center justify-center hover:border-white/40 transition cursor-pointer font-copperplate text-[9px]">
+                        TG
+                    </div>
+                    <div class="w-12 h-12 border border-white/10 flex items-center justify-center hover:border-white/40 transition cursor-pointer font-copperplate text-[9px]">
+                        IG
+                    </div>
+                </div>
             </div>
+        </div>
+        <div class="mt-40 pt-12 border-t border-white/5 flex justify-between items-center text-[8px] uppercase tracking-[0.5em] font-copperplate opacity-30">
+            <span>© 2023 COMILFO • Все права защищены</span>
+            <span class="italic serif-italic normal-case tracking-normal">Design for high taste</span>
         </div>
     </footer>
 
