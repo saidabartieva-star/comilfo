@@ -3,338 +3,184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COMILFO | Кондитерское ателье</title>
+    <title>COMILFO Свадебный Блок</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #F9F5F1;
-            --accent-color: #9B795E;
-            --text-dark: #1A1512;
-            --border-light: rgba(26, 21, 18, 0.1);
+            --bg: #F2E6D6;
+            --brown: #5C4A44;
+            --line: #E91E63;
         }
 
-        /* Настройка Copperplate Gothic */
+        body { background: var(--bg); font-family: 'Inter', sans-serif; color: var(--brown); margin: 0; }
+        
         .font-copperplate {
-            font-family: 'Copperplate', 'Copperplate Gothic Light', 'Copperplate Gothic Bold', serif;
+            font-family: 'Copperplate', 'serif';
             text-transform: uppercase;
             letter-spacing: 0.15em;
-            font-weight: 700;
         }
 
-        html {
-            background-color: #e5e5e5;
+        .wedding-compact-box {
+            max-width: 1200px;
+            margin: 40px auto;
+            background: white;
+            border-radius: 40px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            min-height: 600px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.05);
+        }
+
+        .promo-side {
+            padding: 70px;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            justify-content: space-between;
+            background: #fff;
         }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-dark);
-            scroll-behavior: smooth;
-            width: 1440px;
-            min-width: 1440px;
-            transform-origin: top center;
-            transform: scale(0.65);
-            box-shadow: 0 0 100px rgba(0,0,0,0.1);
+        .content-side {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            background: #FAFAFA;
         }
 
-        h1, h2, h3, h4, .font-brand {
-            @apply font-copperplate;
-        }
-
-        .serif-italic {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-        }
-
-        .img-container {
-            overflow: hidden;
-            border-radius: 2px;
-            background-color: #DBCAB8;
-        }
-
-        .img-container img {
-            transition: transform 1.5s cubic-bezier(0.19, 1, 0.22, 1);
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .img-container:hover img {
-            transform: scale(1.08);
-        }
-
-        .nav-link {
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.25em;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            border-bottom: 1px solid transparent;
-        }
-
-        .nav-link:hover {
-            border-bottom: 1px solid var(--text-dark);
-            opacity: 0.7;
-        }
-
-        .btn-luxury {
-            border: 1px solid var(--text-dark);
-            padding: 1.25rem 2.5rem;
-            font-size: 0.65rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            display: inline-block;
-            @apply font-copperplate;
-        }
-
-        .btn-luxury:hover {
-            background: var(--text-dark);
-            color: white;
-        }
-
-        .marquee {
-            overflow: hidden;
-            white-space: nowrap;
-            background: var(--text-dark);
-            color: var(--bg-color);
-            padding: 1rem 0;
-            @apply font-copperplate;
-            letter-spacing: 0.4em;
-            font-size: 0.7rem;
-        }
-
-        .marquee-content {
-            display: inline-block;
-            animation: marquee 35s linear infinite;
-        }
-
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        .category-card {
-            position: relative;
-            transition: all 0.5s ease;
-        }
-
-        .category-label {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            z-index: 10;
-            white-space: nowrap;
-            opacity: 0.9;
-            transition: transform 0.5s ease;
-            @apply font-copperplate;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
-
-        .category-card:hover .category-label {
-            transform: translateX(-50%) translateY(-10px);
-        }
-
-        .divider {
+        .pink-line {
             height: 1px;
-            background: var(--border-light);
-            width: 100%;
+            background: var(--line);
+            width: 80px;
+            opacity: 0.5;
+        }
+
+        .main-visual {
+            flex-grow: 1;
+            border-radius: 30px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .video-player-box {
+            position: relative;
+            border-radius: 25px;
+            overflow: hidden;
+            /* Адекватное соотношение сторон 16:9 */
+            aspect-ratio: 16 / 9;
+            background: #000;
+        }
+
+        .video-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.25);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: background 0.3s ease;
+        }
+
+        .video-player-box:hover .video-overlay {
+            background: rgba(0,0,0,0.4);
+        }
+
+        .play-btn {
+            width: 60px;
+            height: 60px;
+            border: 1px solid rgba(255,255,255,0.6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(4px);
+            margin-bottom: 15px;
+        }
+
+        .btn-black {
+            background: #2D2D2D;
+            color: white;
+            padding: 18px 45px;
+            font-size: 11px;
+            border-radius: 50px;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-black:hover { background: #000; transform: translateY(-2px); }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background: #FAFAFA;
+            border-radius: 20px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--line);
+            border-radius: 50%;
+        }
+
+        @media (max-width: 1024px) {
+            .wedding-compact-box { grid-template-columns: 1fr; margin: 20px; }
+            .promo-side { padding: 40px; }
         }
     </style>
 </head>
-<body class="antialiased">
+<body>
 
-    <!-- Навигация -->
-    <header class="py-12 px-24 flex justify-between items-center bg-transparent relative z-20">
-        <div class="text-3xl font-copperplate tracking-[0.4em]">COMILFO</div>
-        <nav class="flex space-x-16">
-            <a href="#" class="nav-link">Каталог</a>
-            <a href="#" class="nav-link">О нас</a>
-            <a href="#" class="nav-link">Покупателям</a>
-            <a href="#" class="nav-link">Контакты</a>
-        </nav>
-        <div class="flex items-center space-x-6 text-[10px] tracking-[0.2em] font-medium uppercase">
-            <span>RU</span>
-            <span class="opacity-30">|</span>
-            <span class="opacity-30">EN</span>
-        </div>
-    </header>
-
-    <!-- Главный блок (Hero) -->
-    <section class="px-24 pt-8 pb-40">
-        <div class="grid grid-cols-12 gap-8 items-end mb-16">
-            <div class="col-span-8">
-                <h1 class="text-[5.5rem] leading-[1] font-copperplate mb-8">
-                    Искусство <br> <span class="serif-italic lowercase tracking-normal font-normal">создавать</span> вкус
-                </h1>
-                <p class="max-w-md text-stone-500 text-[10px] leading-relaxed uppercase tracking-[0.25em]">
-                    Десерты, которые выбирают для самых важных событий. Безупречное исполнение в каждой детали.
-                </p>
-            </div>
-            <div class="col-span-4 text-right flex flex-col items-end">
-                <div class="mb-10 text-[9px] tracking-[0.5em] uppercase opacity-40 font-copperplate">Since 2005 • Premium Pastry</div>
-                <a href="#catalog" class="btn-luxury">Перейти в каталог</a>
-            </div>
-        </div>
-        <div class="img-container aspect-[21/9] shadow-sm">
-            <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&q=80" alt="[Изображение десерта на главной]">
-        </div>
-    </section>
-
-    <!-- Сетка категорий -->
-    <section id="catalog" class="px-24 py-40 border-t border-stone-200">
-        <div class="flex justify-between items-center mb-24">
-            <h2 class="text-3xl font-copperplate">Наш ассортимент</h2>
-            <div class="w-1/3 divider"></div>
-        </div>
-        
-        <div class="grid grid-cols-4 gap-6">
-            <!-- Торты -->
-            <div class="category-card group cursor-pointer img-container aspect-[3/4]">
-                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&q=80" alt="[Изображение тортов]">
-                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-500"></div>
-                <h3 class="category-label text-lg">Торты</h3>
+    <div class="wedding-compact-box">
+        <!-- ЛЕВО: Информация -->
+        <div class="promo-side">
+            <div>
+                <div class="pink-line mb-8"></div>
+                <h2 class="font-copperplate text-4xl leading-tight mb-8">Искусство<br>вашего<br>торжества</h2>
+                
+                <div class="space-y-6 max-w-sm">
+                    <p class="text-[13px] text-stone-500 font-light leading-relaxed">
+                        Свадебный торт от COMILFO — это гармония эстетики и безупречного вкуса, созданная специально для вашего события.
+                    </p>
+                    
+                    <div class="benefit-item border border-stone-100">
+                        <div class="dot"></div>
+                        <div>
+                            <h4 class="text-[12px] font-copperplate mb-1">Встреча с шефом</h4>
+                            <p class="text-[10px] text-stone-400 leading-relaxed uppercase tracking-wider">
+                                Чай и десерт в качестве комплимента <br> при обсуждении заказа
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
             
-            <!-- Пироги -->
-            <div class="category-card group cursor-pointer img-container aspect-[3/4]">
-                <img src="https://images.unsplash.com/photo-1562007908-17c67e870c88?auto=format&fit=crop&q=80" alt="[Изображение пирогов]">
-                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-500"></div>
-                <h3 class="category-label text-lg">Пироги</h3>
-            </div>
-            
-            <!-- Свадебные торты -->
-            <div class="category-card group cursor-pointer img-container aspect-[3/4]">
-                <img src="https://images.unsplash.com/photo-1535254973040-607b474cb8c2?auto=format&fit=crop&q=80" alt="[Изображение свадебных тортов]">
-                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-500"></div>
-                <h3 class="category-label text-lg text-center">Свадебные<br>торты</h3>
-            </div>
-            
-            <!-- Мелкоштучная выпечка -->
-            <div class="category-card group cursor-pointer img-container aspect-[3/4]">
-                <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&q=80" alt="[Изображение выпечки]">
-                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-500"></div>
-                <h3 class="category-label text-lg text-center">Мелкоштучная<br>выпечка</h3>
+            <div class="pt-10">
+                <a href="#" class="btn-black font-copperplate">Записаться на встречу</a>
             </div>
         </div>
-    </section>
 
-    <!-- Бегущая строка -->
-    <div class="marquee mb-40">
-        <div class="marquee-content">
-            PREMIUM PRODUCTS • AESTHETICS • DEEP TASTE • ART OF PASTRY • SINCE 2005 • PREMIUM PRODUCTS • AESTHETICS • DEEP TASTE • ART OF PASTRY • SINCE 2005 • 
-        </div>
-        <div class="marquee-content">
-            PREMIUM PRODUCTS • AESTHETICS • DEEP TASTE • ART OF PASTRY • SINCE 2005 • PREMIUM PRODUCTS • AESTHETICS • DEEP TASTE • ART OF PASTRY • SINCE 2005 • 
+        <!-- ПРАВО: Визуал и Видео 16:9 -->
+        <div class="content-side">
+            <div class="main-visual">
+                <img src="https://images.unsplash.com/photo-1512484770464-3e5924a1dc20?auto=format&fit=crop&q=80" alt="[Изображение свадебного торта]" class="w-full h-full object-cover">
+            </div>
+
+            <div class="video-player-box group cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80" alt="[Превью видео доставки]" class="w-full h-full object-cover">
+                <div class="video-overlay">
+                    <div class="play-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <span class="font-copperplate text-[10px] tracking-[0.4em]">Бережная доставка</span>
+                </div>
+            </div>
         </div>
     </div>
-
-    <!-- Блок Качество -->
-    <section class="py-40 px-24 bg-stone-100">
-        <div class="text-center mb-32">
-            <h2 class="text-4xl font-copperplate mb-6">Безупречное качество</h2>
-            <p class="text-[9px] tracking-[0.6em] uppercase opacity-40 font-copperplate">Три столпа нашей философии</p>
-        </div>
-        <div class="grid grid-cols-3 gap-24 max-w-6xl mx-auto">
-            <div class="space-y-8">
-                <div class="text-3xl font-copperplate opacity-20">01</div>
-                <h4 class="font-copperplate text-base tracking-[0.2em]">Отборные продукты</h4>
-                <p class="text-[11px] uppercase tracking-widest text-stone-400 leading-loose">Мы работаем только с лучшими поставщиками шоколада, сливок и свежих ягод.</p>
-            </div>
-            <div class="space-y-8">
-                <div class="text-3xl font-copperplate opacity-20">02</div>
-                <h4 class="font-copperplate text-base tracking-[0.2em]">Авторские рецепты</h4>
-                <p class="text-[11px] uppercase tracking-widest text-stone-400 leading-loose">Каждый вкус проработан до мелочей, чтобы дарить вам истинное наслаждение.</p>
-            </div>
-            <div class="space-y-8">
-                <div class="text-3xl font-copperplate opacity-20">03</div>
-                <h4 class="font-copperplate text-base tracking-[0.2em]">Ручная работа</h4>
-                <p class="text-[11px] uppercase tracking-widest text-stone-400 leading-loose">Индивидуальный подход к декору и оформлению каждого изделия.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Блок История -->
-    <section class="py-60 px-24">
-        <div class="grid grid-cols-12 gap-32 items-center">
-            <div class="col-span-6 relative">
-                <div class="img-container aspect-[4/5] w-4/5 shadow-2xl relative z-10">
-                    <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80" alt="[Изображение процесса производства]">
-                </div>
-                <div class="img-container aspect-square w-3/5 absolute -bottom-20 -right-10 border-[12px] border-[#F9F5F1] shadow-xl z-20">
-                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80" alt="[Изображение интерьера]">
-                </div>
-            </div>
-            <div class="col-span-6">
-                <span class="text-accent uppercase tracking-[0.6em] text-[9px] font-copperplate mb-10 block">Наша история</span>
-                <h2 class="text-6xl font-copperplate mb-12 leading-[1.2]">Создаем традиции <br> вкуса</h2>
-                <div class="space-y-8 text-stone-500 text-xs leading-relaxed uppercase tracking-[0.15em]">
-                    <p>Наша кондитерская ведет свою историю с 2005 года. С самого начала основой работы стали внимание к качеству ингредиентов и уважение к традициям кондитерского мастерства.</p>
-                    <p>За годы работы мы прошли путь от небольшой команды до устойчивого производства, сохранив главный принцип — создавать десерты, к которым хочется возвращаться.</p>
-                </div>
-                <div class="mt-20 pt-16 border-t border-stone-200 flex space-x-20">
-                    <div>
-                        <div class="text-2xl font-copperplate mb-1">18+</div>
-                        <div class="text-[8px] uppercase tracking-widest opacity-40 font-copperplate">Лет опыта</div>
-                    </div>
-                    <div>
-                        <div class="text-2xl font-copperplate mb-1">100%</div>
-                        <div class="text-[8px] uppercase tracking-widest opacity-40 font-copperplate">Натурально</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Футер -->
-    <footer class="bg-[#1A1512] text-white/40 py-48 px-24">
-        <div class="grid grid-cols-12 gap-20">
-            <div class="col-span-5">
-                <h2 class="text-[#F9F5F1] text-4xl font-copperplate mb-12 tracking-[0.5em]">COMILFO</h2>
-                <div class="space-y-6 text-[10px] uppercase tracking-[0.3em]">
-                    <p class="text-white/80 font-copperplate">Кондитерское ателье высокого вкуса</p>
-                    <p class="leading-loose opacity-60">Искусство десерта — это не просто <br> рецепт, это эмоция, запечатленная <br> в сахаре и шоколаде.</p>
-                </div>
-            </div>
-            
-            <div class="col-span-3 space-y-12">
-                <h5 class="text-white text-[10px] font-copperplate tracking-[0.4em]">Навигация</h5>
-                <ul class="space-y-6 text-[9px] uppercase tracking-[0.3em]">
-                    <li><a href="#" class="hover:text-white transition">Каталог изделий</a></li>
-                    <li><a href="#" class="hover:text-white transition">Доставка и оплата</a></li>
-                    <li><a href="#" class="hover:text-white transition">Политика конфиденциальности</a></li>
-                </ul>
-            </div>
-
-            <div class="col-span-4 space-y-12">
-                <h5 class="text-white text-[10px] font-copperplate tracking-[0.4em]">Как нас найти</h5>
-                <div class="space-y-6 text-[11px] tracking-[0.15em] uppercase">
-                    <p class="text-white/90">+7 (495) 123-45-67</p>
-                    <p class="text-white/60 lowercase">hello@comilfo-pastry.ru</p>
-                    <p class="text-white/60">Москва, ул. Эстетов, 22, БЦ "Люкс"</p>
-                </div>
-                <div class="pt-10 flex space-x-6">
-                    <div class="w-12 h-12 border border-white/10 flex items-center justify-center hover:border-white/40 transition cursor-pointer font-copperplate text-[9px]">
-                        TG
-                    </div>
-                    <div class="w-12 h-12 border border-white/10 flex items-center justify-center hover:border-white/40 transition cursor-pointer font-copperplate text-[9px]">
-                        IG
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="mt-40 pt-12 border-t border-white/5 flex justify-between items-center text-[8px] uppercase tracking-[0.5em] font-copperplate opacity-30">
-            <span>© 2023 COMILFO • Все права защищены</span>
-            <span class="italic serif-italic normal-case tracking-normal">Design for high taste</span>
-        </div>
-    </footer>
 
 </body>
 </html>
